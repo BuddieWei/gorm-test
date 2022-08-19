@@ -20,7 +20,7 @@ type User struct {
 	CreateAt   *time.Time     `gorm:"column:create_at" json:"create_at"`
 	UpdateAt   *time.Time     `gorm:"column:update_at" json:"update_at"`
 	ClassID    string         `gorm:"column:class_id;not null" json:"class_id"`
-	Class      Class          `gorm:"joinForeignKey:id" json:"classInfo"`
+	Class      Class          `gorm:"foreignKey:class_id" json:"classInfo"`
 }
 
 // TableName User's table name

@@ -34,12 +34,12 @@ func main() {
 	// apply basic crud api on structs or table models which is specified by table name with function
 	// GenerateModel/GenerateModelAs. And generator will generate table models' code when calling Excute.
 	//g.ApplyBasic(model.User{}, g.GenerateModel("company"), g.GenerateModelAs("people", "Person", gen.FieldIgnore("address")))
-	classMeta := g.GenerateModelAs("t_class", "Class", gen.FieldNewTag("id", "foreignKey:id"))
+	classMeta := g.GenerateModelAs("t_class", "Class")
 	g.ApplyBasic(classMeta)
 	g.ApplyBasic(g.GenerateModelAs("t_user", "User",
 		gen.FieldType("delete_time", "gorm.DeletedAt"),
 		gen.FieldRelate(field.BelongsTo, "Class", classMeta, &field.RelateConfig{
-			JSONTag: "classInfo", GORMTag: "joinForeignKey:id",
+			JSONTag: "classInfo", GORMTag: "foreignKey:class_id",
 		})))
 
 	// apply diy interfaces on structs or table models

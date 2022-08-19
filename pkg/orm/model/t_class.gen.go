@@ -8,7 +8,7 @@ const TableNameClass = "t_class"
 
 // Class mapped from table <t_class>
 type Class struct {
-	ID   string  `gorm:"column:id;primaryKey" json:"id" foreignKey:id`
+	ID   string  `gorm:"column:id;primaryKey" json:"id"`
 	Name *string `gorm:"column:name" json:"name"`
 }
 
